@@ -1,11 +1,15 @@
 import csv, json
 
-# READ THE CSV AND ADD THE DATA TO A DICTIONARY
+#  CSV FILE TO CONVERT
 csv_file_path = "sample-part-data.csv"
+#  JSON FILE THAT WILL HOLD THE CSV CONVERTED INFO
 json_file_path = "sample-part-data.json"
+# WILL HOLD ALL THE JSON DATA
 data ={}
 with open (csv_file_path) as csv_file:
+    #  USED FUNCTION FROM THE CSV MODULE
     csv_reader = csv.DictReader(csv_file)
+    # PROVIDED DESIRED FORMAT FOR EACH ROW OF DATA 
     out = [{
             "Sku": row["sku"],
             "Display_Pn": row["display_pn"],
@@ -51,5 +55,6 @@ with open (csv_file_path) as csv_file:
         
 # WRITE THE DATA TO A JSON FILE
 with open (json_file_path, "w") as json_file:
+    # USED INDENT=4 TO SHOW THE DATA IN ROWS RATHER THAN ONE LINE OF CODE
     json_file.write(json.dumps(out, indent=4))
 
